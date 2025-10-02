@@ -6,11 +6,11 @@ export default function Sidebar({ isOpen, onClose }) {
   const categories = [
     {
       name: "Women's Fashion",
-      children: ["item 1", "item 2"],
+      children: [{ label: "item 1" }, { label: "item 2" }],
     },
     {
       name: "Men's Fashion",
-      children: ["item 1", "item 2"],
+      children: [{ label: "item 1" }, { label: "item 2" }],
     },
     "Electronics",
     "Home & Lifestyle",

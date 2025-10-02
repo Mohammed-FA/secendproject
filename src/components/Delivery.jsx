@@ -1,7 +1,7 @@
 import img1 from "../assets/icon-delivery.png";
 import img2 from "../assets/Icon-Customer service.png";
 import img3 from "../assets/Icon-secure.png";
-const FeatureSection = () => {
+const Delivery = () => {
   const features = [
     {
       title: "FREE AND FAST DELIVERY",
@@ -21,7 +21,7 @@ const FeatureSection = () => {
   ];
 
   return (
-    <section className="">
+    <section className="my-10">
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
@@ -33,11 +33,13 @@ const FeatureSection = () => {
                   </div>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="sm:text-lg text-base font-semibold text-gray-900 mb-2">
                 {feature.title}
               </h3>
               {feature.description && (
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <p className="text-gray-600 sm:text-sm text-sm">
+                  {feature.description}
+                </p>
               )}
             </div>
           ))}
@@ -47,4 +49,4 @@ const FeatureSection = () => {
   );
 };
 
-export default FeatureSection;
+export default Delivery;

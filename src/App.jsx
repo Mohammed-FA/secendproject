@@ -7,29 +7,27 @@ import Categories from "./components/Categories";
 import FeaturedSection from "./components/FeaturedSection";
 import Footer from "./components/Footer";
 import Enhancemusic from "./components/Enhancemusic";
-import FeatureSection from "./components/FeatureSection";
-import Calcalete from "./components/ex/Calcalete";
+import Delivery from "./components/delivery";
 
 export default function App() {
   return (
     <div className="font-sans bg-white">
-      {/* <Navbar /> */}
+      <Navbar />
 
       <main className="w-full">
         <div className="mx-auto container">
-          <Calcalete />
-          {/* <HeroBanner />
+          <HeroBanner />
           <FlashSales />
           <Categories />
           <Enhancemusic />
           <BestSelling />
           <ExploreOurProducts />
-          <FeaturedSection /> */}
-          {/* <FeatureSection /> */}
+          <FeaturedSection />
+          <Delivery />
         </div>
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

@@ -14,7 +14,7 @@ export default function HeroBanner() {
       <Sidebar isOpen={sidebar} onClose={() => setSideBar(false)} />
       <div className="relative toptablet:w-[75%] w-full bg-black text-white toptablet:p-6 sm:pt-3 lg:ml-10 toptablet:ml-5  mt-6">
         <button
-          className="toptablet:hidden absolute sm:top-5 sm:left-5 left-2 top-2 block sm:text-4xl text-2xl z-50 cursor-pointer "
+          className="toptablet:hidden absolute sm:top-5 sm:left-5 left-2 top-2 block sm:text-4xl text-2xl z-10 cursor-pointer "
           onClick={() => setSideBar(true)}
         >
           <IoMenuOutline />

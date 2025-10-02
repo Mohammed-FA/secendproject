@@ -8,6 +8,105 @@ import appStore from "../assets/AppStore.png";
 import { FaInstagram } from "react-icons/fa";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { RiTwitterXLine } from "react-icons/ri";
+import Menu from "./comment/Menu";
+
+function ItemsContent({ title, child }) {
+  console.log(child);
+  return (
+    <div>
+      <Menu
+        label={title}
+        items={child}
+        childClass="text-white/80 ml-0!"
+        className="xxsm:hidden block text-white"
+      />
+      <div className="hidden xxsm:block">
+        <h3 className=" text-lg font-semibold md:mb-7 mb-3">{title}</h3>
+        {child.some((c) => c.link) ? (
+          <ul className="flex flex-col md:gap-3 gap-2 text-gray-300">
+            {child.map((c, index) => (
+              <li key={index}>
+                <a href={c.link} className="hover:text-white transition-colors">
+                  {c.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <address className="text-gray-300 not-italic flex flex-col md:gap-3 gap-2">
+            {child.map((c, index) => (
+              <p key={index} className="mb-2 max-w-44 leading-5 text-base ">
+                {c.label}
+              </p>
+            ))}
+          </address>
+        )}
+      </div>
+    </div>
+  );
+}
+const items = [
+  {
+    title: "Support",
+    child: [
+      {
+        label: "lll Bijoy sarani, Dhaka, DH 1515, Bangladesh.",
+      },
+      {
+        label: "exclusive@gmail.com",
+      },
+      {
+        label: "+88015-88888-9999",
+      },
+    ],
+  },
+  {
+    title: "Account",
+    child: [
+      {
+        label: " My Account",
+        link: "/",
+      },
+      {
+        label: " Login / Register",
+        link: "/",
+      },
+      {
+        label: " Cart",
+        link: "/",
+      },
+      {
+        label: "Wishlist",
+        link: "/",
+      },
+      {
+        label: "Shop",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Quick Link",
+    child: [
+      {
+        label: "Privacy Policy",
+        link: "/",
+      },
+      {
+        label: "Terms Of Use",
+        link: "/",
+      },
+      {
+        label: "FAQ",
+        link: "/",
+      },
+      {
+        label: "Contact",
+        link: "/",
+      },
+    ],
+  },
+];
 
 const Footer = () => {
   return (
@@ -32,74 +131,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-          <div>
-            <h3 className="text-lg font-semibold md:mb-7 mb-3">Support</h3>
-            <address className="text-gray-300 not-italic flex flex-col md:gap-3 gap-2">
-              <p className="mb-2 max-w-44 leading-5 text-base ">
-                lll Bijoy sarani, Dhaka, DH 1515, Bangladesh.
-              </p>
-              <p>exclusive@gmail.com</p>
-              <p>+88015-88888-9999</p>
-            </address>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold md:mb-7 mb-3">Account</h3>
-            <ul className="flex flex-col md:gap-3 gap-2 text-gray-300">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  My Account
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Login / Register
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Cart
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Wishlist
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Shop
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold md:mb-7 mb-3">Quick Link</h3>
-            <ul className="flex flex-col md:gap-3 gap-2 text-gray-300 mb-6">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Terms Of Use
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+          {items.map((item, index) => (
+            <ItemsContent key={index} {...item} />
+          ))}
 
           <div>
             <h3 className="text-lg font-semibold md:mb-7 mb-3">Download App</h3>

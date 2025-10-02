@@ -4,7 +4,7 @@ function Sheet({ className, side = "right", children, isOpen, onClose }) {
   return (
     <>
       <div
-        className={`fixed h-screen w-screen  toptablet:w-fit toptablet:h-fit  toptablet:relative top-0 left-0 inset-0 toptablet:bg-transparent bg-black/40 z-40 transition-opacity duration-300 ${
+        className={`fixed h-screen w-screen z-50  toptablet:w-fit toptablet:h-fit  toptablet:relative top-0 left-0 inset-0 toptablet:bg-transparent bg-black/40  transition-opacity duration-300 ${
           isOpen
             ? "opacity-100 visible"
             : "opacity-0 toptablet:opacity-100 invisible"
