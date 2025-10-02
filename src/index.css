@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+
+  --color-graytext: #FAFAFA;
+  --color-bg-gray: #F5F5F5;
+  --color-primary: #DB4444;
+  --color-secendy-bg: #303030;
+  --color-secendy: #00FF66;
+  --color-startcolor: #F5DC56;
+  --text-10px: 10px;
+  --text-17rem: 1.6rem;
+  --breakpoint-toptablet: 870px;
+  --breakpoint-xxs: 350px;
+  --breakpoint-lastpoint: 300px;
+  --breakpoint-xxsm: 450px;
+  --spacing-7xl: 1200px;
+}
+
+
+.container{
+  @apply max-w-7xl px-4;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active{
+  @apply !bg-red-500  !border-white border-2 rounded-full 
+}
+.swiper-pagination-bullet{
+  @apply !bg-[#FFFFFF]  rounded-full !p-1.5;
+}
+
+h1{
+  @apply xxsm:text-2xl xxs:text-xl text-lg lg:text-[45px] md:text-3xl lg:leading-14 font-semibold;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(../public/Poppins-Regular.ttf);
+}
+
+*{
+  font-family: Poppins !important;
+}
