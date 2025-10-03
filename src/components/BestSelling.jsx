@@ -9,51 +9,45 @@ import Button from "./comment/Button";
 const products = [
   {
     id: 1,
-    discount: 40,
     image: img1,
     title: "HAVIT HV-G92 Gamepad",
     price: 120,
     oldPrice: 160,
     rating: 5,
-    reviews: 88,
+    reviews: 65,
   },
   {
     id: 2,
-    discount: 35,
     image: img2,
     title: "AK-900 Wired Keyboard",
     price: 960,
     oldPrice: 1160,
     rating: 4,
-    reviews: 75,
+    reviews: 65,
   },
   {
     id: 3,
-    discount: 30,
     image: img3,
     title: "IPS LCD Gaming Monitor",
     price: 370,
     oldPrice: 400,
     rating: 4,
-    reviews: 99,
+    reviews: 65,
   },
   {
     id: 4,
-    discount: 25,
     image: img4,
     title: "S-Series Comfort Chair",
     price: 375,
     oldPrice: 400,
     rating: 5,
-    reviews: 99,
+    reviews: 65,
   },
 ];
 function BestSelling() {
   return (
-    <section className="mt-[8%] ">
-      <div>
-        <Title label="This Month" />
-      </div>
+    <section className="lg:pb-10 md:pb-4 pb-3">
+      <Title label="This Month" />
       <div className="flex justify-between md:flex-nowrap flex-wrap items-end">
         <div className="xxs:flex-row flex-col mt-3 w-full flex justify-between items-center md:items-end">
           <h1 className="font-semibold">Best Selling Products</h1>

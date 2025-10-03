@@ -1,6 +1,7 @@
 import React from "react";
 import music from "../assets/music.png";
 import Button from "./comment/Button";
+import bg from "../assets/Ellipse 23.png";
 
 const Enhancemusic = () => {
   const TimeUnit = ({ value, label }) => (
@@ -15,14 +16,14 @@ const Enhancemusic = () => {
   );
 
   return (
-    <div className="my-10">
-      <div className="relative flex justify-between toptablet:p-10   bg-black">
-        <div className="relative z-10 flex  flex-col toptablet:justify-between toptablet:text-left toptablet:items-start text-center items-center w-full gap-4 py-10">
+    <div className="my-10 bg-black">
+      <div className="relative flex justify-between   toptablet:w-[90%] mx-auto w-full">
+        <div className="relative z-10 flex toptablet:w-2/5 w-full  flex-col toptablet:justify-between toptablet:text-left toptablet:items-start text-center items-center  gap-4 py-10">
           <div className="text-secendy text-sm font-medium tracking-wider uppercase ">
             Categories
           </div>
 
-          <h1 className="font-bold text-white">
+          <h1 className="font-bold tracking-widest text-[48px] text-white">
             Enhance Your
             <br />
             <span>Music Experience</span>
@@ -45,8 +46,9 @@ const Enhancemusic = () => {
             </Button>
           </div>
         </div>
-        <div className=" hidden toptablet:block ">
-          <img src={music} />
+        <div className=" hidden toptablet:flex w-3/5  justify-center relative items-center ">
+          <img src={bg} className="w-full h-full z-10 absolute top-0 left-0" />
+          <img src={music} className="relative z-20" />
         </div>
       </div>
     </div>

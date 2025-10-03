@@ -56,6 +56,7 @@ function Modal({ onClose, image, title, price, oldPrice, rating, reviews }) {
 export function Product({
   id,
   typeTow = false,
+  isNew,
   discount,
   image,
   title,
@@ -77,16 +78,23 @@ export function Product({
         className="bg-white   relative group"
         onClick={() => setShowModal(true)}
       >
-        <span className="absolute top-2 z-10 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
-          -{discount}%
-        </span>
+        {isNew && (
+          <span className="absolute top-2 z-10 left-2 bg-green-400 text-white text-xs font-semibold px-2 py-1 rounded">
+            New
+          </span>
+        )}
+        {discount && (
+          <span className="absolute top-2 z-10 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
+            -{discount}%
+          </span>
+        )}
         <div className=" rounded-md h-60 flex  overflow-hidden relative items-center justify-center bg-bg-gray">
           <img
             src={imgsrc}
             alt={title}
             className="h-44 object-contain w-full"
           />
-          <div className="absolute  top-0 right-0  w-full h-full flex flex-col justify-between  opacity-0  group-hover:opacity-100 transition">
+          <div className="absolute  top-0 right-0  w-full h-full flex flex-col justify-between  md:opacity-0 opacity-100  group-hover:opacity-100 transition">
             <div className="w-full flex  justify-end">
               <div className="flex flex-col mr-3 mt-2 justify-end gap-2">
                 <Button
@@ -116,7 +124,7 @@ export function Product({
             </div>
             <div
               style={{ backgroundColor: "red" }}
-              className="bg-white w-full absolute -bottom-full group-hover:bottom-0 duration-300 "
+              className="bg-white w-full absolute md:-bottom-full bottom-0 group-hover:bottom-0 duration-300 "
             >
               <Button
                 onClick={(e) => e.stopPropagation()}

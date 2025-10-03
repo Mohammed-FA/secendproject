@@ -24,7 +24,7 @@ export default function Sidebar({ isOpen, onClose }) {
     <>
       <Sheet isOpen={isOpen} onClose={onClose} side="left">
         <aside className=" toptablet:border-r w-full flex justify-center items-center  border-gray-300  toptablet:pt-6 pt-[20%] ">
-          <ul className="flex flex-col h-full gap-3 toptablet:w-full w-[90%] sm:text-base text-sm  text-black/80">
+          <ul className="flex flex-col h-full gap-2 toptablet:w-full w-[90%] sm:text-base text-sm  text-black/80">
             {categories.map((cat, i) => {
               if (cat.name == undefined)
                 return (

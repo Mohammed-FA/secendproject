@@ -21,7 +21,7 @@ const Delivery = () => {
   ];
 
   return (
-    <section className="my-10">
+    <section className="lg:py-30 md:py-10 py-5 ">
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (

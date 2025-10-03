@@ -19,8 +19,8 @@ export default function App() {
           <HeroBanner />
           <FlashSales />
           <Categories />
-          <Enhancemusic />
           <BestSelling />
+          <Enhancemusic />
           <ExploreOurProducts />
           <FeaturedSection />
           <Delivery />

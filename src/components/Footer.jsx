@@ -9,42 +9,6 @@ import { FaInstagram } from "react-icons/fa";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { RiTwitterXLine } from "react-icons/ri";
 import Menu from "./comment/Menu";
-
-function ItemsContent({ title, child }) {
-  console.log(child);
-  return (
-    <div>
-      <Menu
-        label={title}
-        items={child}
-        childClass="text-white/80 ml-0!"
-        className="xxsm:hidden block text-white"
-      />
-      <div className="hidden xxsm:block">
-        <h3 className=" text-lg font-semibold md:mb-7 mb-3">{title}</h3>
-        {child.some((c) => c.link) ? (
-          <ul className="flex flex-col md:gap-3 gap-2 text-gray-300">
-            {child.map((c, index) => (
-              <li key={index}>
-                <a href={c.link} className="hover:text-white transition-colors">
-                  {c.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <address className="text-gray-300 not-italic flex flex-col md:gap-3 gap-2">
-            {child.map((c, index) => (
-              <p key={index} className="mb-2 max-w-44 leading-5 text-base ">
-                {c.label}
-              </p>
-            ))}
-          </address>
-        )}
-      </div>
-    </div>
-  );
-}
 const items = [
   {
     title: "Support",
@@ -107,6 +71,42 @@ const items = [
     ],
   },
 ];
+
+function ItemsContent({ title, child }) {
+  console.log(child);
+  return (
+    <div>
+      <Menu
+        label={title}
+        items={child}
+        childClass="text-white/80 ml-0!"
+        className="xxsm:hidden block text-white"
+      />
+      <div className="hidden xxsm:block">
+        <h3 className=" text-lg font-semibold md:mb-7 mb-3">{title}</h3>
+        {child.some((c) => c.link) ? (
+          <ul className="flex flex-col md:gap-3 gap-2 text-gray-300">
+            {child.map((c, index) => (
+              <li key={index}>
+                <a href={c.link} className="hover:text-white transition-colors">
+                  {c.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <address className="text-gray-300 not-italic flex flex-col md:gap-3 gap-2">
+            {child.map((c, index) => (
+              <p key={index} className="mb-2 max-w-44 leading-5 text-base ">
+                {c.label}
+              </p>
+            ))}
+          </address>
+        )}
+      </div>
+    </div>
+  );
+}
 
 const Footer = () => {
   return (

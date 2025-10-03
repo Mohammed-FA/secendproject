@@ -1,9 +1,13 @@
 import React from "react";
-import img1 from "../assets/1.png";
-import img2 from "../assets/2.png";
-import img3 from "../assets/3.png";
-import img4 from "../assets/4.png";
-import cartImg from "../assets/4.png";
+import img1 from "../assets/ExploreOurProducts/first.jpg";
+import img2 from "../assets/ExploreOurProducts/secend.png";
+import img3 from "../assets/ExploreOurProducts/thrid.png";
+import img4 from "../assets/ExploreOurProducts/four.png";
+import img5 from "../assets/ExploreOurProducts/five.png";
+
+import img6 from "../assets/ExploreOurProducts/six.png";
+import img7 from "../assets/ExploreOurProducts/seven.png";
+import img8 from "../assets/ExploreOurProducts/eight.png";
 import { Product } from "./comment/Product";
 
 import Slider from "./comment/Slider";
@@ -13,7 +17,6 @@ import Title from "./comment/Title";
 const products = [
   {
     id: 1,
-    discount: 40,
     image: img1,
     title: "HAVIT HV-G92 Gamepad",
     price: 120,
@@ -22,8 +25,8 @@ const products = [
   },
   {
     id: 2,
-    discount: 35,
     image: img2,
+    isNew: true,
     title: "AK-900 Wired Keyboard",
     price: 960,
     rating: 4,
@@ -41,7 +44,6 @@ const products = [
   },
   {
     id: 3,
-    discount: 30,
     image: img3,
     title: "IPS LCD Gaming Monitor",
     price: 370,
@@ -50,35 +52,53 @@ const products = [
   },
   {
     id: 4,
-    discount: 25,
     image: img4,
     title: "S-Series Comfort Chair",
     price: 375,
+    color: [
+      {
+        color: "yellow",
+        img: img4,
+      },
+      {
+        color: "red",
+        img: img5,
+      },
+    ],
     rating: 5,
     reviews: 99,
   },
   {
     id: 5,
-    discount: 20,
-    image: cartImg,
+    image: img5,
     title: "Cart with Buy",
     price: 220,
     rating: 4,
     reviews: 50,
   },
   {
-    id: 9,
-    discount: 40,
-    image: img1,
+    id: 6,
+    image: img6,
+    isNew: true,
+
     title: "HAVIT HV-G92 Gamepad",
     price: 120,
+    color: [
+      {
+        color: "black",
+        img: img6,
+      },
+      {
+        color: "red",
+        img: img5,
+      },
+    ],
     rating: 5,
     reviews: 88,
   },
   {
     id: 7,
-    discount: 35,
-    image: img2,
+    image: img7,
     title: "AK-900 Wired Keyboard",
     price: 960,
     rating: 4,
@@ -86,17 +106,25 @@ const products = [
   },
   {
     id: 8,
-    discount: 30,
-    image: img3,
+    image: img8,
     title: "IPS LCD Gaming Monitor",
     price: 370,
+    color: [
+      {
+        color: "black",
+        img: img8,
+      },
+      {
+        color: "red",
+        img: img2,
+      },
+    ],
     rating: 4,
     reviews: 99,
   },
   {
     id: 9,
-    discount: 25,
-    image: img4,
+    image: img2,
     title: "S-Series Comfort Chair",
     price: 375,
     rating: 5,
@@ -104,8 +132,7 @@ const products = [
   },
   {
     id: 10,
-    discount: 20,
-    image: cartImg,
+    image: img1,
     title: "Cart with Buy",
     price: 220,
     rating: 4,
@@ -115,11 +142,9 @@ const products = [
 function ExploreOurProducts() {
   return (
     <>
-      <div className="mt-[8%] ">
-        <Title label="Our Products" />
-      </div>
+      <Title label="Our Products" />
       <Slider
-        className="sm:mt-10 mt-3"
+        className="sm:mt-10 mt-3 "
         type="product"
         titlecontaint={
           <div className="flex justify-between items-center md:items-end">
@@ -142,7 +167,7 @@ function ExploreOurProducts() {
           return rows;
         }, [])}
       </Slider>
-      <div className="flex justify-center items-center py-10 border-b border-gray-300">
+      <div className="flex justify-center items-center py-10 ">
         <Button className="rounded-md">View All Product</Button>
       </div>
     </>

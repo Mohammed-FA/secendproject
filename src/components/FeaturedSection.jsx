@@ -52,9 +52,7 @@ const FeaturedSection = () => {
 
   return (
     <div>
-      <div className="mt-[8%] ">
-        <Title label="Featured" />
-      </div>
+      <Title label="Featured" />
       <h1 className="lg:mb-10 md:mb-5 mb-3 mt-3">New Arrival</h1>
       <div className="grid xxsm:grid-cols-2  sm:grid-cols-4 xxs:grid-cols-2 grid-cols-1  lg:gap-7 sm:gap-5 gap-2">
         <div className="bg-black xxs:row-span-2  xxs:col-span-2   rounded-sm relative  items-end flex justify-end ">

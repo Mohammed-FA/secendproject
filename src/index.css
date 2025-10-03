@@ -29,7 +29,7 @@
 }
 
 h1{
-  @apply xxsm:text-2xl xxs:text-xl text-lg lg:text-[45px] md:text-3xl lg:leading-14 font-semibold;
+  @apply xxsm:text-2xl xxs:text-xl text-lg lg:text-[40px] md:text-3xl lg:leading-14 font-semibold;
 }
 
 @font-face {

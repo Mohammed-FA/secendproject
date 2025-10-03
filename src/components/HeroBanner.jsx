@@ -12,7 +12,7 @@ export default function HeroBanner() {
   return (
     <div className="flex">
       <Sidebar isOpen={sidebar} onClose={() => setSideBar(false)} />
-      <div className="relative toptablet:w-[75%] w-full bg-black text-white toptablet:p-6 sm:pt-3 lg:ml-10 toptablet:ml-5  mt-6">
+      <div className="relative toptablet:w-[75%] w-full bg-black text-white lg:ml-10 toptablet:ml-5  mt-3">
         <button
           className="toptablet:hidden absolute sm:top-5 sm:left-5 left-2 top-2 block sm:text-4xl text-2xl z-10 cursor-pointer "
           onClick={() => setSideBar(true)}
@@ -32,7 +32,7 @@ export default function HeroBanner() {
                     iPhone 14 Series
                   </span>
                 </div>
-                <h2 className="text-2xl lg:text-[45px] md:text-3xl max-w-64 lg:leading-14 font-medium">
+                <h2 className="text-2xl lg:text-[45px] md:text-3xl max-w-72 lg:leading-14 font-medium">
                   Up to 10% off Voucher
                 </h2>
                 <a className="flex gap-3 mt-2 items-center justify-center sm:justify-start text-white">
@@ -49,7 +49,7 @@ export default function HeroBanner() {
               <img
                 src={iphon}
                 alt="iPhone"
-                className="w-full max-w-xs md:max-w-md"
+                className="w-full max-w-xs md:max-w-md mt-0.5"
               />
             </div>
           </div>
@@ -66,11 +66,11 @@ export default function HeroBanner() {
                     iPhone 14 Series
                   </span>
                 </div>
-                <h2 className="text-2xl lg:text-[45px] md:text-3xl max-w-64 lg:leading-14 font-medium">
+                <h2 className="text-2xl lg:text-[45px] md:text-3xl max-w-72 lg:leading-14 font-medium">
                   Up to 10% off Voucher
                 </h2>
                 <a className="flex gap-3 mt-2 items-center justify-center sm:justify-start text-white">
-                  <span className="  after:contain-content after:w-full after:h-[1px] after:bg-white after:left-0 after:absolute relative md:after:-bottom-1.5 after:-bottom-0 ">
+                  <span className="  after:contain-content after:w-full after:h-[1px] after:bg-white after:left-0 after:absolute relative md:after:-bottom-1.5 after:-bottom-0">
                     Shop Now
                   </span>
                   <FaArrowRight className="mt-0.5" />
@@ -83,7 +83,7 @@ export default function HeroBanner() {
               <img
                 src={iphon}
                 alt="iPhone"
-                className="w-full max-w-xs md:max-w-md"
+                className="w-full max-w-xs md:max-w-md mt-0.5"
               />
             </div>
           </div>

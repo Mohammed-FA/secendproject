@@ -72,9 +72,7 @@ const products = [
 function FlashSales() {
   return (
     <>
-      <div className="mt-[8%] ">
-        <Title label="Today’s" />
-      </div>
+      <Title label="Today’s" />
       <Slider
         className="md:mt-10 mt-3 "
         type="product"
@@ -99,7 +97,9 @@ function FlashSales() {
         ))}
       </Slider>
       <div className="flex justify-center items-center py-10 border-b border-gray-300">
-        <Button className="rounded-md">View All Product</Button>
+        <Button className="rounded-md text-xs" size="lg">
+          View All Product
+        </Button>
       </div>
     </>
   );

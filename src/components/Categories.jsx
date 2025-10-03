@@ -49,9 +49,7 @@ const categories = [
 function Categories() {
   return (
     <>
-      <div className="mt-[8%] ">
-        <Title label="Categories" />
-      </div>
+      <Title label="Categories" />
       <Slider
         spaceBetween={25}
         breakpoints={{

@@ -15,8 +15,8 @@ function Sheet({ className, side = "right", children, isOpen, onClose }) {
       <div
         className={`${className} fixed toptablet:translate-x-0 ${
           side === "right"
-            ? "rounded-l-xl rounded-bl-xl"
-            : "rounded-r-xl rounded-br-xl"
+            ? "xxs:rounded-l-xl xxs:rounded-bl-xl"
+            : "xxs:rounded-r-xl xxs:rounded-br-xl"
         } toptablet:relative top-0 h-full toptablet:w-full xxs:w-72 w-full bg-white  z-50  transform transition-transform duration-300 ${
           side === "right"
             ? isOpen
