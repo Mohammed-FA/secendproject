@@ -8,12 +8,22 @@ import FeaturedSection from "./components/FeaturedSection";
 import Footer from "./components/Footer";
 import Enhancemusic from "./components/Enhancemusic";
 import Delivery from "./components/Delivery";
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (window != undefined) {
+      setLoading(false);
+    }
+  }, []);
   return (
     <div className="font-sans bg-white">
       <Navbar />
 
+      {loading && (
+        <div className="w-screen h-screen bg-black ">loading ...</div>
+      )}
       <main className="w-full">
         <div className="mx-auto container">
           <HeroBanner />
