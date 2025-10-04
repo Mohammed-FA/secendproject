@@ -7,7 +7,7 @@ import Categories from "./components/Categories";
 import FeaturedSection from "./components/FeaturedSection";
 import Footer from "./components/Footer";
 import Enhancemusic from "./components/Enhancemusic";
-import Delivery from "./components/delivery";
+import Delivery from "./components/Delivery";
 
 export default function App() {
   return (
