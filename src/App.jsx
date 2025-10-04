@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Enhancemusic from "./components/Enhancemusic";
 import Delivery from "./components/Delivery";
 import { useEffect, useState } from "react";
+import Loading from "./components/comment/Loading";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -21,9 +22,7 @@ export default function App() {
     <div className="font-sans bg-white">
       <Navbar />
 
-      {loading && (
-        <div className="w-screen h-screen bg-black ">loading ...</div>
-      )}
+      {loading && <Loading />}
       <main className="w-full">
         <div className="mx-auto container">
           <HeroBanner />
