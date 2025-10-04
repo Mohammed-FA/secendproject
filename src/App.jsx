@@ -13,9 +13,16 @@ import Loading from "./components/comment/Loading";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    if (window != undefined) {
+    const handleLoad = () => setLoading(false);
+
+    if (document.readyState === "complete") {
+      // إذا الصفحة محملة بالكامل بالفعل
       setLoading(false);
+    } else {
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
     }
   }, []);
   return (
