@@ -18,7 +18,6 @@ export default function App() {
     const handleLoad = () => setLoading(false);
 
     if (document.readyState === "complete") {
-      // إذا الصفحة محملة بالكامل بالفعل
       setLoading(false);
     } else {
       window.addEventListener("load", handleLoad);

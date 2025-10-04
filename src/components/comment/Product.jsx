@@ -140,7 +140,9 @@ export function Product({
           <h3 className="text-sm font-semibold text-gray-800">{title}</h3>
 
           <div
-            className={`flex ${typeTow ? "flex-row" : "flex-col"} gap-2 mt-2`}
+            className={`flex ${
+              typeTow ? "flex-row flex-wrap" : "flex-col"
+            } gap-2 mt-2`}
           >
             <div className="">
               <span className="text-red-500 font-bold text-lg">${price}</span>
@@ -193,7 +195,7 @@ export function Product({
       {showModal && (
         <Modal
           onClose={() => setShowModal(false)}
-          image={image}
+          image={imgsrc}
           title={title}
           price={price}
           oldPrice={oldPrice}
