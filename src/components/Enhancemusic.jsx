@@ -46,7 +46,7 @@ const Enhancemusic = () => {
             </Button>
           </div>
         </div>
-        <div className=" w-full flex  h-full toptablet:opacity-100 opacity-75 absolute top-0 left-0 z-10  toptablet:flex toptablet:w-3/5  justify-center toptablet:relative items-center ">
+        <div className=" w-full flex toptablet:py-10  h-full toptablet:opacity-100 opacity-75 absolute top-0 left-0 z-10  toptablet:flex toptablet:w-3/5  justify-center toptablet:relative items-center ">
           <img src={bg} className="w-full h-full z-10 absolute top-0 left-0" />
           <img
             src={music}
