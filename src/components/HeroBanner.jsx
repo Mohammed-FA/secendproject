@@ -20,8 +20,8 @@ export default function HeroBanner() {
           <IoMenuOutline />
         </button>
         <Slider type="banner" slidesPerView={1} className="sm:py-0! py-7! ">
-          <div className="grid sm:grid-cols-2 items-center gap-6">
-            <div className="flex items-center sm:justify-start justify-center h-full">
+          <div className="grid sm:grid-cols-2 items-center gap-6 overflow-hidden">
+            <div className="flex items-center sm:justify-start justify-center h-full relative z-10">
               <div className="toptablet:ml-8 sm:ml-5 ml-2  flex flex-col gap-1 sm:text-left text-center ">
                 <div className="flex gap-2 items-center justify-center sm:justify-start">
                   <img
@@ -45,7 +45,7 @@ export default function HeroBanner() {
               </div>
             </div>
 
-            <div className="hidden sm:flex justify-center">
+            <div className="sm:relative absolute z-0 sm:opacity-100 flex  sm:items-center items-start opacity-50 w-full h-full top-0 left-0 sm:flex justify-center">
               <img
                 src={iphon}
                 alt="iPhone"

@@ -70,7 +70,7 @@ export default function Slider({
         breakpoints={
           breakpoints || {
             0: { slidesPerView: slidesPerView == 1 ? 1 : 1 },
-            350: { slidesPerView: slidesPerView == 1 ? 1 : 2 },
+            400: { slidesPerView: slidesPerView == 1 ? 1 : 2 },
             640: { slidesPerView: slidesPerView == 1 ? 1 : 3 },
             1024: { slidesPerView: slidesPerView == 1 ? 1 : 4 },
           }
