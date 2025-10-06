@@ -49,7 +49,7 @@ function BestSelling() {
     <section className="lg:pb-10 md:pb-4 pb-3">
       <Title label="This Month" />
       <div className="flex justify-between md:flex-nowrap flex-wrap items-end">
-        <div className="xxs:flex-row flex-col mt-3 w-full flex justify-between items-center md:items-end">
+        <div className="xxs:flex-row gap-3 flex-col mt-3 w-full flex justify-between items-center md:items-end">
           <h1 className="font-semibold">Best Selling Products</h1>
           <div>
             <Button size="lg" className="text-xs ">

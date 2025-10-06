@@ -128,7 +128,7 @@ export function Product({
             >
               <Button
                 onClick={(e) => e.stopPropagation()}
-                className="w-full"
+                className="w-full md:text-base text-xs"
                 variant="black"
               >
                 Add to Cart
