@@ -54,8 +54,8 @@ const FeaturedSection = () => {
     <div>
       <Title label="Featured" />
       <h1 className="lg:mb-10 md:mb-5 mb-3 mt-3">New Arrival</h1>
-      <div className="grid xxsm:grid-cols-2  sm:grid-cols-4 xxs:grid-cols-2 grid-cols-1  lg:gap-7 sm:gap-5 gap-2">
-        <div className="bg-black xxs:row-span-2  xxs:col-span-2   rounded-sm relative  items-end flex justify-end ">
+      <div className="grid xxsm:grid-cols-2  sm:grid-cols-4 lastpoint:grid-cols-2 grid-cols-1  lg:gap-7 sm:gap-5 gap-2">
+        <div className="bg-black lastpoint:row-span-2  lastpoint:col-span-2   rounded-sm relative  items-end flex justify-end ">
           <div className="relative  w-full items-end flex justify-center ">
             <img src={featuredItems[0].img} className=" w-full h-full  " />
           </div>
@@ -65,7 +65,7 @@ const FeaturedSection = () => {
             description={featuredItems[0].description}
           />
         </div>
-        <div className="xxs:col-span-2 bg-[#0D0D0D]  rounded-sm">
+        <div className="lastpoint:col-span-2 bg-[#0D0D0D]  rounded-sm">
           <div className="flex w-full justify-end  relative">
             <img
               src={featuredItems[1].img}
