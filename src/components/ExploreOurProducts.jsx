@@ -1,145 +1,30 @@
-import React from "react";
-import img1 from "../assets/ExploreOurProducts/first.jpg";
-import img2 from "../assets/ExploreOurProducts/secend.png";
-import img3 from "../assets/ExploreOurProducts/thrid.png";
-import img4 from "../assets/ExploreOurProducts/four.png";
-import img5 from "../assets/ExploreOurProducts/five.png";
+import React, { useEffect, useState } from "react";
 
-import img6 from "../assets/ExploreOurProducts/six.png";
-import img7 from "../assets/ExploreOurProducts/seven.png";
-import img8 from "../assets/ExploreOurProducts/eight.png";
-import { Product } from "./comment/Product";
+import { Product, ProductSkeleton } from "./comment/Product";
 
 import Slider from "./comment/Slider";
 import Button from "./comment/Button";
 import Title from "./comment/Title";
+import { GetProductsPagination } from "../api/Product/product";
 
-const products = [
-  {
-    id: 1,
-    image: img1,
-    title: "HAVIT HV-G92 Gamepad",
-    price: 120,
-    rating: 5,
-    reviews: 88,
-  },
-  {
-    id: 2,
-    image: img2,
-    isNew: true,
-    title: "AK-900 Wired Keyboard",
-    price: 960,
-    rating: 4,
-    reviews: 75,
-    color: [
-      {
-        color: "red",
-        img: img2,
-      },
-      {
-        color: "blue",
-        img: img1,
-      },
-    ],
-  },
-  {
-    id: 3,
-    image: img3,
-    title: "IPS LCD Gaming Monitor",
-    price: 370,
-    rating: 4,
-    reviews: 99,
-  },
-  {
-    id: 4,
-    image: img4,
-    title: "S-Series Comfort Chair",
-    price: 375,
-    color: [
-      {
-        color: "yellow",
-        img: img4,
-      },
-      {
-        color: "red",
-        img: img5,
-      },
-    ],
-    rating: 5,
-    reviews: 99,
-  },
-  {
-    id: 5,
-    image: img5,
-    title: "Cart with Buy",
-    price: 220,
-    rating: 4,
-    reviews: 50,
-  },
-  {
-    id: 6,
-    image: img6,
-    isNew: true,
-
-    title: "HAVIT HV-G92 Gamepad",
-    price: 120,
-    color: [
-      {
-        color: "black",
-        img: img6,
-      },
-      {
-        color: "red",
-        img: img5,
-      },
-    ],
-    rating: 5,
-    reviews: 88,
-  },
-  {
-    id: 7,
-    image: img7,
-    title: "AK-900 Wired Keyboard",
-    price: 960,
-    rating: 4,
-    reviews: 75,
-  },
-  {
-    id: 8,
-    image: img8,
-    title: "IPS LCD Gaming Monitor",
-    price: 370,
-    color: [
-      {
-        color: "black",
-        img: img8,
-      },
-      {
-        color: "red",
-        img: img2,
-      },
-    ],
-    rating: 4,
-    reviews: 99,
-  },
-  {
-    id: 9,
-    image: img2,
-    title: "S-Series Comfort Chair",
-    price: 375,
-    rating: 5,
-    reviews: 99,
-  },
-  {
-    id: 10,
-    image: img1,
-    title: "Cart with Buy",
-    price: 220,
-    rating: 4,
-    reviews: 50,
-  },
-];
 function ExploreOurProducts() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const res = await GetProductsPagination(7, 17);
+        setProducts(res.data);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
   return (
     <>
       <Title label="Our Products" />
@@ -153,19 +38,31 @@ function ExploreOurProducts() {
         }
         slidesPerView={4}
       >
-        {products.reduce((rows, item, index) => {
-          if (index % 2 === 0) {
-            rows.push(
-              <div key={index} className="flex flex-col gap-5">
-                <Product typeTow {...products[index]} />
-                {products[index + 1] && (
-                  <Product typeTow {...products[index + 1]} />
-                )}
-              </div>
-            );
-          }
-          return rows;
-        }, [])}
+        {loading
+          ? [...Array(8)].reduce((rows, item, index) => {
+              if (index % 2 === 0) {
+                rows.push(
+                  <div key={index} className="flex flex-col gap-5">
+                    <ProductSkeleton />
+                    <ProductSkeleton />
+                  </div>
+                );
+              }
+              return rows;
+            }, [])
+          : products.reduce((rows, item, index) => {
+              if (index % 2 === 0) {
+                rows.push(
+                  <div key={index} className="flex flex-col gap-5">
+                    <Product typeTow {...products[index]} />
+                    {products[index + 1] && (
+                      <Product typeTow {...products[index + 1]} />
+                    )}
+                  </div>
+                );
+              }
+              return rows;
+            }, [])}
       </Slider>
       <div className="flex justify-center items-center py-10 ">
         <Button className="rounded-md">View All Product</Button>

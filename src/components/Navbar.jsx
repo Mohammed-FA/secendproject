@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { IoIosHeartEmpty, IoIosSearch } from "react-icons/io";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
 import { HiMenuAlt2 } from "react-icons/hi";
 import Sheet from "./comment/Sheet";
 import Input from "./comment/Input";
+import CenterElement from "./comment/CenterElement";
 
 const navbaritems = [
   {
@@ -21,16 +22,17 @@ const navbaritems = [
   },
   {
     text: "Sign Up",
-    link: "/SignUp",
+    link: "/Signup",
   },
 ];
-export default function Navbar() {
+export default function Navbar({ cartCount }) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [openLeft, setOpenLeft] = useState(false);
 
   return (
-    <header className="bg-white relative pb-3 md:pt-7 pt-3 border-b border-gray-300">
+    <header className="bg-white relative   py-3 border-b border-gray-300">
       <nav className=" container mx-auto  flex justify-between items-center">
         <div className="text-xl lg:w-1/4 w-1/5 sm:text-3xl font-bold flex gap-2 items-center">
           <button
@@ -98,7 +100,17 @@ export default function Navbar() {
 
           <div className="flex gap-2 ">
             <IoIosHeartEmpty size={25} className="" />
-            <BsCart3 size={25} className="" />
+            <button
+              className="relative cursor-pointer"
+              onClick={() => navigate("/CartPage")}
+            >
+              {cartCount !== 0 && (
+                <CenterElement className="w-5 h-5 text-xs absolute -top-2 -right-2 rounded-full text-white bg-primary text-center">
+                  {cartCount}
+                </CenterElement>
+              )}
+              <BsCart3 size={25} className="" />
+            </button>
           </div>
         </div>
       </nav>

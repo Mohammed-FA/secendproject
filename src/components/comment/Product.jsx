@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaHeart, FaStar } from "react-icons/fa";
 import ReactDOM from "react-dom";
 import Button from "./Button";
 import { CiHeart } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
-function Modal({ onClose, image, title, price, oldPrice, rating, reviews }) {
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import BottonLoading from "./BottonLoading";
+import { AddProductToCart } from "../../api/addtoCart";
+import { AuthContext } from "../../Context/AuthContext";
+
+function Modal({ onClose, imgsrc, title, price, oldPrice, rating, reviews }) {
   const [finsh, setfinsh] = useState(false);
 
   useEffect(() => {
@@ -17,7 +23,6 @@ function Modal({ onClose, image, title, price, oldPrice, rating, reviews }) {
   const hideelement = () => {
     setfinsh(false);
     setTimeout(() => {
-      console.log(1);
       onClose();
     }, 100);
   };
@@ -40,7 +45,7 @@ function Modal({ onClose, image, title, price, oldPrice, rating, reviews }) {
         >
           <IoMdClose size={28} />
         </button>
-        <img src={image} alt={title} className="w-full h-48 object-contain" />
+        <img src={imgsrc} alt={title} className="w-full h-48 object-contain" />
         <h2 className="mt-4 text-lg font-semibold">{title}</h2>
         <p className="text-red-500 font-bold text-lg">${price}</p>
         {oldPrice && <p className="text-gray-400 line-through">${oldPrice}</p>}
@@ -49,7 +54,7 @@ function Modal({ onClose, image, title, price, oldPrice, rating, reviews }) {
         </p>
       </div>
     </div>,
-    document.body // 👈 this is key
+    document.body
   );
 }
 
@@ -58,25 +63,83 @@ export function Product({
   typeTow = false,
   isNew,
   discount,
-  image,
+  imgsrc,
   title,
   price,
   oldPrice,
   rating,
   reviews,
   color,
+  myColor,
 }) {
+  const { setCarcount, removeToast, setToasts } = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
   const [likeId, setLikeId] = useState(0);
-  const [imgsrc, setImgsrc] = useState(image);
-  useEffect(() => {
-    console.log(likeId);
-  }, [likeId]);
+  const [imgurl, setImgsrc] = useState(imgsrc);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const CheckUser = (errorformuser) => {
+    const token = localStorage.getItem("token");
+
+    if (!token || errorformuser) {
+      Swal.fire({
+        title: "You need to sign in",
+        text: "You must sign in to like this post. Do you want to sign in now?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Sign In",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+          window.scrollTo(0, 0);
+        } else {
+          setLikeId(0);
+        }
+      });
+      return;
+    }
+  };
+  const LikethisPost = (id) => {
+    CheckUser();
+    console.log(id);
+  };
+  const alert = (message) => {
+    const id = Date.now();
+    const newToast = { id, message };
+    setToasts((prev) => [...prev, newToast]);
+
+    setTimeout(() => removeToast(id), 5000);
+  };
+
+  const AddToCart = async (id, title) => {
+    CheckUser();
+    setLoading(true);
+    try {
+      await AddProductToCart(id);
+      alert(`Added product ${title.slice(0, 5)}... to cart ✅`);
+      setCarcount((pre) => pre + 1);
+    } catch {
+      CheckUser(true);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <div
         className="bg-white   relative group"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          navigate(`/ProductDetails/${id}`);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+        }}
       >
         {isNew && (
           <span className="absolute top-2 z-10 left-2 bg-green-400 text-white text-xs font-semibold px-2 py-1 rounded">
@@ -90,7 +153,7 @@ export function Product({
         )}
         <div className=" rounded-md h-60 flex  overflow-hidden relative items-center justify-center bg-bg-gray">
           <img
-            src={imgsrc}
+            src={imgurl}
             alt={title}
             className="h-44 object-contain w-full"
           />
@@ -101,6 +164,7 @@ export function Product({
                   onClick={(e) => {
                     e.stopPropagation();
                     setLikeId((prev) => (prev === 0 ? id : 0));
+                    LikethisPost(id);
                   }}
                   variant="circular"
                   className="bg-white h-8 w-8"
@@ -127,11 +191,15 @@ export function Product({
               className="bg-white w-full absolute md:-bottom-full bottom-0 group-hover:bottom-0 duration-300 "
             >
               <Button
-                onClick={(e) => e.stopPropagation()}
+                disabled={loading}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  AddToCart(id, title);
+                }}
                 className="w-full md:text-base text-xs"
                 variant="black"
               >
-                Add to Cart
+                {loading ? <BottonLoading /> : "Add to Cart"}
               </Button>
             </div>
           </div>
@@ -146,7 +214,7 @@ export function Product({
           >
             <div className="">
               <span className="text-red-500 font-bold text-lg">${price}</span>
-              {oldPrice && (
+              {oldPrice != 0 && (
                 <span className="text-gray-400 line-through ml-2">
                   ${oldPrice}
                 </span>
@@ -168,26 +236,45 @@ export function Product({
         </div>
         {color && (
           <div className="flex gap-2 mt-2">
-            {Array.isArray(color) &&
-              color.map((item, index) => (
+            {Array.isArray(color) && color.length != 0 && (
+              <>
                 <div
-                  key={index}
                   className={`${
-                    imgsrc == item.img ? "border-2" : "border-0"
+                    imgurl == imgsrc ? "border-2" : "border-0"
                   } border-black rounded-full flex justify-center items-center`}
                 >
                   <Button
                     onClick={(e) => {
                       e.stopPropagation();
-                      setImgsrc(item.img);
+                      setImgsrc(imgsrc);
                     }}
                     size="sm"
-                    style={{ backgroundColor: item.color }}
+                    style={{ backgroundColor: myColor }}
                     variant="circular"
                     className="  border-white border-2 "
                   ></Button>
                 </div>
-              ))}
+                {color.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`${
+                      imgurl == item.imgsrc ? "border-2" : "border-0"
+                    } border-black rounded-full flex justify-center items-center`}
+                  >
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setImgsrc(item.imgsrc);
+                      }}
+                      size="sm"
+                      style={{ backgroundColor: item.color }}
+                      variant="circular"
+                      className="  border-white border-2 "
+                    ></Button>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         )}
       </div>
@@ -195,7 +282,7 @@ export function Product({
       {showModal && (
         <Modal
           onClose={() => setShowModal(false)}
-          image={imgsrc}
+          imgsrc={imgurl}
           title={title}
           price={price}
           oldPrice={oldPrice}
@@ -204,5 +291,24 @@ export function Product({
         />
       )}
     </>
+  );
+}
+
+export function ProductSkeleton() {
+  return (
+    <div className="bg-white animate-pulse rounded-md p-4">
+      <div className="h-60 bg-gray-200 rounded-md"></div>
+
+      <div className="mt-4 space-y-2">
+        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+        <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        <div className="flex gap-2 mt-3">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="h-4 w-4 bg-gray-200 rounded-full"></div>
+          ))}
+        </div>
+        <div className="h-6 bg-gray-200 rounded w-full mt-3"></div>
+      </div>
+    </div>
   );
 }

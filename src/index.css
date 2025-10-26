@@ -3,6 +3,7 @@
 @theme {
 
   --color-graytext: #FAFAFA;
+  --color-bluecolor: #CBE4E8;
   --color-bg-gray: #F5F5F5;
   --color-primary: #DB4444;
   --color-secendy-bg: #303030;
@@ -27,7 +28,21 @@
 .swiper-pagination-bullet{
   @apply !bg-[#FFFFFF]  rounded-full !p-1.5;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
 h1{
   @apply xxsm:text-2xl xxs:text-xl text-lg lg:text-[40px] md:text-3xl lg:leading-14 font-semibold;
 }

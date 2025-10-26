@@ -7,7 +7,7 @@ export default function Button({
   size = "md",
   onClick,
   style,
-
+  disabled = false,
   className,
   ...props
 }) {
@@ -16,8 +16,11 @@ export default function Button({
 
   const variantStyles = {
     primary: "bg-primary text-white  hover:bg-primary/95",
+    white: "bg-white border-black border text-black  hover:bg-white/95",
     outline:
       "border border-primary text-primary hover:text-white hover:bg-primary/95",
+    outlineBlack:
+      "border border-black/70 text-black hover:text-white hover:bg-black/95",
     circular: " rounded-full ",
     black: "bg-black text-white hover:bg-white hover:text-black",
     scandary:
@@ -36,6 +39,7 @@ export default function Button({
       style={{
         ...style,
       }}
+      disabled={disabled}
       onClick={onClick}
       className={clsx(
         baseStyles,

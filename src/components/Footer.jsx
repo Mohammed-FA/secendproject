@@ -73,7 +73,6 @@ const items = [
 ];
 
 function ItemsContent({ title, child }) {
-  console.log(child);
   return (
     <div>
       <Menu

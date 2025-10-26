@@ -4,13 +4,13 @@ function Loading() {
   return (
     <div
       id="Loading"
-      class="fixed w-screen h-screen top-0 left-0 flex justify-center items-center bg-white "
+      className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center bg-white "
       style={{ zIndex: 100 }}
     >
       <div role="status">
         <svg
           aria-hidden="true"
-          class="w-14 h-14 text-gray-200 animate-spin  fill-primary"
+          className="w-14 h-14 text-gray-200 animate-spin  fill-primary"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ function Loading() {
             fill="currentFill"
           />
         </svg>
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
     </div>
   );

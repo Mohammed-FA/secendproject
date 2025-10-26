@@ -1,7 +1,7 @@
 import React from "react";
 import music from "../assets/music.png";
-import Button from "./comment/Button";
 import bg from "../assets/Ellipse 23.png";
+import Button from "./comment/Button";
 
 const Enhancemusic = () => {
   const TimeUnit = ({ value, label }) => (
