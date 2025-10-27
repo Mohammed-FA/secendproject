@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Addproduct } from "../api/Product/product";
+import BottonLoading from "../components/comment/BottonLoading";
 
 export default function AddProduct() {
   const navigate = useNavigate();
@@ -120,7 +121,7 @@ export default function AddProduct() {
             disabled={loading}
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
           >
-            {loading ? "جاري الإضافة..." : "إضافة المنتج"}
+            {loading ? <BottonLoading /> : "إضافة المنتج"}
           </button>
         </form>
       </div>

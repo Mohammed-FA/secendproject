@@ -177,7 +177,19 @@ export default function CartPage() {
               <span>${subtotal}</span>
             </div>
             <CenterElement>
-              <Button size="lg" className="rounded-md !font-light text-sm">
+              <Button
+                size="lg"
+                onClick={() => {
+                  navigator("/checkoutPage");
+
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  });
+                }}
+                className="rounded-md !font-light text-sm"
+              >
                 Proceed to Checkout
               </Button>
             </CenterElement>

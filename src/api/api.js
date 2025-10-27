@@ -1,4 +1,4 @@
-export let baseurl = "https://localhost:7245/api";
+export let baseurl = "http://mohamedfarjallah-001-site1.mtempurl.com/api";
 
 export let url = {
   SINGIN: "Create-account",

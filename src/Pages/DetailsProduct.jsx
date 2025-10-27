@@ -49,7 +49,8 @@ function DetailsProduct() {
   }, [product]);
 
   const buyProduct = (id, quantity) => {
-    
+    console.log(id);
+    console.log(quantity);
   };
   if (loading) {
     return (
@@ -99,7 +100,7 @@ function DetailsProduct() {
               {[...Array(4)].map((item, index) => (
                 <div
                   key={index}
-                  className="w-full toptablet:h-full h-20 flex justify-center items-center bg-bg-gray"
+                  className="w-full toptablet:h-24 overflow-hidden h-20 flex justify-center items-center bg-bg-gray"
                 >
                   <img
                     src={imgurl}
@@ -109,7 +110,7 @@ function DetailsProduct() {
                 </div>
               ))}
             </div>
-            <div className="w-full  md:h-full h-96  ">
+            <div className="w-full  md:h-96 h-96  ">
               <img
                 src={imgurl}
                 alt="product main"

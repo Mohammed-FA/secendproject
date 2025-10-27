@@ -123,7 +123,7 @@ export function Product({
       alert(`Added product ${title.slice(0, 5)}... to cart ✅`);
       setCarcount((pre) => pre + 1);
     } catch {
-      CheckUser(true);
+      console.log(1);
     } finally {
       setLoading(false);
     }

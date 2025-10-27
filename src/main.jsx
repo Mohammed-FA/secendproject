@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./index.css";
 import App from "./Pages/App";
@@ -12,6 +12,8 @@ import AddColor from "./Pages/AddColor";
 import { AuthProvider } from "./Context/AuthContext.jsx";
 import CartPage from "./Pages/CartPage.jsx";
 import DetailsProduct from "./Pages/DetailsProduct.jsx";
+import CheckoutPage from "./Pages/CheckoutPage.jsx";
+import ShowAllProduct from "./Pages/ShowAllProduct.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -22,8 +24,10 @@ createRoot(document.getElementById("root")).render(
             <Route index element={<App />} />
             <Route path="AddProduct" element={<AddProduct />} />
             <Route path="ProductDetails/:id" element={<DetailsProduct />} />
-
             <Route path="CartPage" element={<CartPage />} />
+            <Route path="CheckoutPage" element={<CheckoutPage />} />
+            <Route path="ShowAllProduct" element={<ShowAllProduct />} />
+
             <Route path="AddColor/:id" element={<AddColor />} />
             <Route path="login" element={<Login />} />
             <Route path="Signup" element={<Signup />} />

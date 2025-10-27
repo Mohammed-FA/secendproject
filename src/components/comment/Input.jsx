@@ -12,6 +12,8 @@ function Input({
   className,
   iconClassName,
   name,
+  label,
+  isrequired,
 }) {
   const border = `border border-gray-300 rounded  px-4`;
   const bg = `bg-bg-gray rounded  px-4`;
@@ -34,6 +36,11 @@ function Input({
   return (
     <div className="flex flex-col w-full">
       <div className="relative">
+        {label && (
+          <h2 className="text-black/50 mb-2">
+            {label} {isrequired && <span className="text-primary">*</span>}
+          </h2>
+        )}
         {Icon && iconPosition === "left" && (
           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
             <Icon size={iconsize || 18} />
