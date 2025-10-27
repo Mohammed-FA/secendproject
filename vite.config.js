@@ -8,4 +8,9 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000, // بالـ KB (هنا 1 ميغابايت)
   },
+  server: {
+    proxy: {
+      "/api": "http://mohamedfarjallah-001-site1.mtempurl.com",
+    },
+  },
 });
