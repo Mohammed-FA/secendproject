@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Addproduct } from "../api/Product/product";
 import BottonLoading from "../components/comment/BottonLoading";
+import Button from "../components/comment/Button";
+import Input from "../components/comment/Input";
 
 export default function AddProduct() {
   const navigate = useNavigate();
@@ -48,9 +50,12 @@ export default function AddProduct() {
       }
     } catch (error) {
       if (error.response) {
-        setMessage(error.response.data.message || "حدث خطأ أثناء الإضافة");
+        setMessage(
+          error.response.data.message ||
+            "An error occurred while adding the product"
+        );
       } else {
-        setMessage("فشل الاتصال بالسيرفر");
+        setMessage("Failed to connect to the server");
       }
     } finally {
       setLoading(false);
@@ -61,7 +66,7 @@ export default function AddProduct() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          إضافة منتج
+          Add Product
         </h1>
 
         {message && (
@@ -71,44 +76,41 @@ export default function AddProduct() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
+          <Input
             type="text"
             name="title"
-            placeholder="العنوان"
+            placeholder="Title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
           <textarea
             name="description"
-            placeholder="الوصف"
+            placeholder="Description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded  px-4 py-2 w-full focus:border-primary focus:ring-0 "
           />
 
-          <input
+          <Input
             type="number"
             name="price"
-            placeholder="السعر"
+            placeholder="Price"
             value={formData.price}
             onChange={handleChange}
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
-          <input
+          <Input
             type="number"
             name="oldPrice"
-            placeholder="السعر القديم (اختياري)"
+            placeholder="Old Price (optional)"
             value={formData.oldPrice}
             onChange={handleChange}
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          <input
+          <Input
             type="file"
             name="imgUrl"
             onChange={handleChange}
@@ -116,13 +118,13 @@ export default function AddProduct() {
             accept="image/*"
           />
 
-          <button
+          <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+            className="w-full !font-light rounded-md"
           >
-            {loading ? <BottonLoading /> : "إضافة المنتج"}
-          </button>
+            {loading ? <BottonLoading /> : "Add Product"}
+          </Button>
         </form>
       </div>
     </div>

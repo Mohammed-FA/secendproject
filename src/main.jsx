@@ -22,15 +22,19 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<HomePageLayout />}>
             <Route index element={<App />} />
-            <Route path="AddProduct" element={<AddProduct />} />
-            <Route path="ProductDetails/:id" element={<DetailsProduct />} />
-            <Route path="CartPage" element={<CartPage />} />
-            <Route path="CheckoutPage" element={<CheckoutPage />} />
-            <Route path="ShowAllProduct" element={<ShowAllProduct />} />
 
-            <Route path="AddColor/:id" element={<AddColor />} />
             <Route path="login" element={<Login />} />
             <Route path="Signup" element={<Signup />} />
+
+
+            <Route path="AddProduct" element={<AddProduct />} />
+            <Route path="AddColor/:id" element={<AddColor />} />
+            <Route path="ProductDetails/:id" element={<DetailsProduct />} />
+            <Route path="ShowAllProduct" element={<ShowAllProduct />} />
+            
+            <Route path="CartPage" element={<CartPage />} />
+            <Route path="CheckoutPage" element={<CheckoutPage />} />
+            
           </Route>
         </Routes>
       </AuthProvider>

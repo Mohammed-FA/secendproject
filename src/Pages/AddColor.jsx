@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Addcolor } from "../api/Product/product";
+import Button from "../components/comment/Button";
 
 export default function AddColor() {
   const { id } = useParams();
@@ -86,20 +87,24 @@ export default function AddColor() {
         ))}
 
         <div className="flex justify-between mt-4">
-          <button
+          <Button
             type="button"
             onClick={addColorField}
-            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+            variant="outline"
+            className="text-xs rounded-md !font-light"
           >
             + Add Another Color
-          </button>
+          </Button>
+          <a href="/AddProduct" className="cursor-pointer hover:underline">
+            Add Another Product
+          </a>
 
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
-          >
+          <a href="/" className="cursor-pointer hover:underline">
+            skip
+          </a>
+          <Button className="text-xs rounded-md !font-light" type="submit">
             Submit Colors
-          </button>
+          </Button>
         </div>
       </form>
     </div>
