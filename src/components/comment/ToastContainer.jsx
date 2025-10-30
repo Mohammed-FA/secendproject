@@ -6,7 +6,7 @@ export default memo(function ToastContainer() {
   const { removeToast, toasts } = useContext(AuthContext);
 
   return ReactDOM.createPortal(
-    <div className="fixed top-13 w-full    mx-auto   z-[9999]">
+    <div className="fixed top-13 w-full  mx-auto   z-[9999]">
       <div className="flex justify-end container w-full mx-auto">
         <div className="flex flex-col gap-3">
           {toasts.map((toast) => (

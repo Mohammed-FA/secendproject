@@ -177,7 +177,10 @@ export function Product({
                   )}
                 </Button>
                 <Button
-                  onClick={() => setShowModal(true)}
+                  onClick={(e) =>{
+                    e.stopPropagation();
+                    
+                    setShowModal(true)}}
                   variant="circular"
                   className="bg-white h-8 w-8"
                   size="sm"

@@ -250,14 +250,16 @@ export default function ShowAllProduct() {
         />
       )}
 
-      {/* ✅ Edit Modal with CSS animation */}
+
       {showEditModal && (
         <div
           className={`fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 transition-opacity duration-300 ${
             modalVisible ? "opacity-100" : "opacity-0"
           }`}
+          onClick={()=>closeModal()} 
         >
           <div
+          onClick={(e)=>e.stopPropagation()}
             className={`bg-white p-6 rounded-xl shadow-lg w-[400px] transform transition-all duration-300 ${
               modalVisible
                 ? "opacity-100 translate-y-0 scale-100"
