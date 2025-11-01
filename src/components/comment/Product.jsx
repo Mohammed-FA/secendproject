@@ -15,9 +15,10 @@ function Modal({ onClose, imgsrc, title, price, oldPrice, rating, reviews }) {
   const [finsh, setfinsh] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setfinsh(true);
     }, 50);
+    return () => clearTimeout(timer);
   }, []);
 
   const hideelement = () => {
@@ -58,7 +59,7 @@ function Modal({ onClose, imgsrc, title, price, oldPrice, rating, reviews }) {
   );
 }
 
-export function Product({
+export const Product = React.memo(function Product({
   id,
   typeTow = false,
   isNew,
@@ -128,6 +129,7 @@ export function Product({
       setLoading(false);
     }
   };
+
   return (
     <>
       <div
@@ -177,10 +179,11 @@ export function Product({
                   )}
                 </Button>
                 <Button
-                  onClick={(e) =>{
+                  onClick={(e) => {
                     e.stopPropagation();
-                    
-                    setShowModal(true)}}
+
+                    setShowModal(true);
+                  }}
                   variant="circular"
                   className="bg-white h-8 w-8"
                   size="sm"
@@ -295,7 +298,7 @@ export function Product({
       )}
     </>
   );
-}
+});
 
 export function ProductSkeleton() {
   return (
